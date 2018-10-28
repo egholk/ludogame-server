@@ -150,7 +150,7 @@ int[] Byvalues = {
 
 void setup() {
   size(100, 100);
-  // Starts a myServer on port 5204
+  //connect with port
   ludoServer = new Server(this, 5255); 
   
 }   
@@ -166,24 +166,24 @@ void serverEvent(Server server, Client client) {
 
 void draw() {
   
+  //Reads the string sent by the client
   Client c = ludoServer.available();
   if(c != null){
     String whatClientSaid = c.readString();
     println(whatClientSaid);
-    //If the string is longer than 1 letter/number, in is a game piece
+    
     if(whatClientSaid.length() > 1){
-
       piece = Integer.parseInt(whatClientSaid);
-      }
+      }//If the string is longer than 1 letter/number, in is a game piece
     else if(whatClientSaid.length() == 1){
       diceRoll = Integer.parseInt(whatClientSaid);
-      }
-      //else if(whatClientSaid.length() == 2){
-      //players = Integer.parseInt(whatClientSaid);
-      //}
+      } //if it is 1 it's the number from the diceRoll
+      
   }
   
   if(diceRoll == 0 || piece == 0 ) return;
+  
+  //Stopped the player amount from blinking
   
     if (timer == 0 && !timerBoolean) {
     ludoServer.write(number);
@@ -219,7 +219,7 @@ void draw() {
     gp14X = Gxvalues[gp14_loc]; 
     gp14Y = Gyvalues[gp14_loc]; 
   }
-  //Yellow________________________________
+  //Red________________________________
    else if(piece == 21){ 
     gp21_loc = gp21_loc + diceRoll;
     gp21X = Rxvalues[gp21_loc]; 
