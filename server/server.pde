@@ -19,6 +19,7 @@ int gp11_loc = -1;
 int gp12_loc = -1;
 int gp13_loc = -1;
 int gp14_loc = -1;
+//Is -1 because the 0 in the array is the first location on the board (outside of the home circle)
 
 int gp11X;
 int gp12X;
